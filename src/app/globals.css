@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === TEMA 1: ELEGANT (Default — hasil upgrade) === */
+/* Palet lebih hangat & romantis: krem gading, aksen rose-gold, hijau sage.
+   Font heading Playfair tetap; radius besar untuk kesan premium. */
+[data-theme="elegant"] {
+  --bg-main: #FAF7F2;        /* Krem gading hangat */
+  --bg-card: #FFFFFF;        /* Putih bersih */
+  --text-main: #3D3A34;      /* Coklat taupe gelap */
+  --text-muted: #8A8478;     /* Abu taupe */
+  --accent: #B76E79;         /* Rose gold */
+  --accent-2: #7C8C6F;       /* Sage green */
+  --border: #E8E2D8;         /* Krem garis */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lato', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+}
+
+/* === TEMA 2: MODERN MINIMALIST === */
+[data-theme="modern"] {
+  --bg-main: #0F172A;        /* Biru gelap (slate) */
+  --bg-card: #1E293B;        /* Biru sedang */
+  --text-main: #F1F5F9;      /* Putih kebiruan */
+  --text-muted: #94A3B8;     /* Abu biru */
+  --accent: #3B82F6;         /* Biru cerah */
+  --accent-2: #10B981;       /* Hijau emerald */
+  --border: #334155;         /* Biru gelap */
+  --font-heading: system-ui, -apple-system, sans-serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-heading);
+  transition: font-family 0.5s ease;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* === CUSTOM SCROLLBAR (Dinamis) === */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-main);
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: var(--bg-main); border-radius: 10px; }
+*::-webkit-scrollbar-thumb { background-color: var(--accent); border-radius: 10px; border: 2px solid var(--bg-main); }
+
+/* === ANIMASI TRANSISI TEMA === */
+@keyframes themeSwitchElegant {
+  0% { filter: blur(0px) brightness(1); transform: scale(1); }
+  50% { filter: blur(2px) brightness(1.1); transform: scale(0.98); }
+  100% { filter: blur(0px) brightness(1); transform: scale(1); }
+}
+
+@keyframes themeSwitchModern {
+  0% { filter: hue-rotate(0deg) contrast(1); }
+  50% { filter: hue-rotate(90deg) contrast(1.2); }
+  100% { filter: hue-rotate(0deg) contrast(1); }
+}
+
+.theme-transitioning-elegant {
+  animation: themeSwitchElegant 0.6s ease-in-out;
+}
+
+.theme-transitioning-modern {
+  animation: themeSwitchModern 0.6s ease-in-out;
+}
+
+/* === TOAST NOTIFICATION CONTAINER === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+[data-theme="jemuran"] {
+  --bg-main: #fef3c7;        /* Cream hangat */
+  --bg-card: #fffbeb;        /* Cream lebih terang */
+  --text-main: #451a03;      /* Coklat tua */
+  --text-muted: #92400e;     /* Coklat medium */
+  --accent: #d97706;         /* Amber/Orange */
+  --accent-2: #b45309;       /* Amber gelap */
+  --border: #fcd34d;         /* Kuning muda */
+  --font-heading: 'Georgia', serif;
+  --font-body: 'Georgia', serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+}
